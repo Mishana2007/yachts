@@ -111,6 +111,100 @@ body {
     margin: 4px 0;
     transition: all 0.3s ease;
   }
+
+
+
+  /* --- Главный экран (баннер) --- */
+.main-banner {
+    position: relative;
+    width: 100%;
+    height: 75vh; /* Высота экрана */
+    overflow: hidden;
+}
+
+/* Затемняющий слой для контраста */
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Фото яхты */
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Текст на баннере --- */
+.banner-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+}
+
+.banner-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: #f1f1f1;
+    max-width: 600px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+}
+
+/* --- Кнопка "Выбрать яхту" --- */
+.banner-btn {
+    display: inline-block;
+    background: #FFC107;
+    color: #222;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+    transition: all 0.3s ease;
+}
+
+.banner-btn:hover {
+    background: #FFA000;
+    box-shadow: 0 6px 12px rgba(255, 193, 7, 0.5);
+    transform: translateY(-3px);
+}
+
+/* --- Адаптация под мобильные устройства --- */
+@media (max-width: 768px) {
+    .main-banner {
+        height: 50vh; /* Делаем фото меньше */
+    }
+
+    .banner-title {
+        font-size: 24px;
+    }
+
+    .banner-subtitle {
+        font-size: 16px;
+    }
+
+    .banner-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
   
   /* Главный экран */
   .hero {
@@ -848,5 +942,355 @@ button:hover {
     input,
     textarea {
         font-size: 14px;
+    }
+}
+
+
+
+
+/* новые */
+
+
+/* --- Каталог яхт --- */
+.boat-catalog {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f8f8f8;
+}
+
+.boat-title {
+    font-size: 30px;
+    color: #222;
+    margin-bottom: 30px;
+}
+
+/* --- Сетка яхт --- */
+.boat-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* --- Карточка яхты --- */
+.boat-card {
+    background: white;
+    width: 360px;
+    border-radius: 12px;
+    overflow: hidden;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+position: relative;
+}
+
+.boat-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* — Фото яхты — */
+.boat-image {
+position: relative;
+}
+
+.boat-image img {
+width: 100%;
+height: 200px;
+object-fit: cover;
+}
+
+/* — Метки над фото (количество людей и статус) — */
+.boat-capacity, .boat-status {
+position: absolute;
+top: 10px;
+left: 10px;
+background: rgba(0, 0, 0, 0.7);
+color: white;
+padding: 5px 10px;
+border-radius: 5px;
+font-size: 14px;
+}
+
+.boat-status {
+background: #e74c3c; /* Красный для “Хит” */
+left: auto;
+right: 10px;
+}
+
+/* — Информация о яхте — */
+.boat-info {
+padding: 20px;
+text-align: left;
+}
+
+.boat-info h3 {
+font-size: 22px;
+margin-bottom: 10px;
+}
+
+.boat-price {
+font-size: 18px;
+color: #e67e22;
+font-weight: bold;
+margin-bottom: 15px;
+}
+
+/* — Кнопки “Подробнее” и “Арендовать” — */
+.boat-buttons {
+display: flex;
+gap: 8px;
+margin-bottom: 15px;
+}
+
+.boat-btn {
+flex: 1;
+padding: 10px;
+text-align: center;
+font-size: 16px;
+text-decoration: none;
+border-radius: 6px;
+transition: 0.3s;
+}
+
+.boat-btn.details {
+background: #bdc3c7;
+color: #333;
+}
+
+.boat-btn.details:hover {
+background: #95a5a6;
+}
+
+.boat-btn.rent {
+background: #e74c3c;
+color: white;
+}
+
+.boat-btn.rent:hover {
+background: #c0392b;
+}
+
+/* — Удобства на борту — */
+.boat-features {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+font-size: 14px;
+}
+
+.boat-features span {
+background: #f0e68c;
+padding: 5px 10px;
+border-radius: 5px;
+}
+
+/* — Кнопка “Все яхты” — */
+.boat-all {
+margin-top: 30px;
+}
+
+.boat-btn.all {
+display: inline-block;
+background: #FFC107;
+color: #222;
+padding: 12px 24px;
+font-size: 18px;
+font-weight: bold;
+border-radius: 8px;
+text-transform: uppercase;
+text-decoration: none;
+box-shadow: 0 5px 10px rgba(255, 193, 7, 0.4);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boat-btn.all:hover {
+background: #FFA000;
+transform: translateY(-3px);
+box-shadow: 0 8px 15px rgba(255, 193, 7, 0.6);
+}
+
+/* — Адаптация под мобильные устройства — */
+@media (max-width: 768px) {
+.boat-list {
+flex-direction: column;
+align-items: center;
+}
+.boat-card {
+    width: 90%;
+}
+
+.boat-btn {
+    font-size: 14px;
+    padding: 8px;
+}
+}
+
+/* --- Общий стиль кнопок --- */
+.boat-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.boat-btn {
+    flex: 1;
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Кнопка "Подробнее" --- */
+.boat-btn.details {
+    background: #f8f8f8;
+    color: #222;
+    border: 2px solid #d1d1d1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+}
+
+.boat-btn.details i {
+    font-size: 14px;
+    margin-left: 8px;
+    color: #777;
+}
+
+.boat-btn.details:hover {
+    background: #e0e0e0;
+    border-color: #bdbdbd;
+}
+
+/* --- Кнопка "Арендовать" --- */
+.boat-btn.rent {
+    background: #e74c3c;
+    color: white;
+}
+
+.boat-btn.rent:hover {
+    background: #c0392b;
+}
+
+/* --- Адаптация под мобильные устройства --- */
+@media (max-width: 768px) {
+    .boat-buttons {
+        flex-direction: column;
+    }
+
+    .boat-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+
+
+/* --- Подвал (футер) --- */
+.bottom-footer {
+    background: #fff;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+/* --- Логотип внизу --- */
+.footer-brand {
+    margin-bottom: 15px;
+}
+
+.footer-logo-text {
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* --- Иконки соцсетей --- */
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-icon {
+    width: 55px;
+    height: 55px;
+    background: #f1f1f1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Иконки внутри кнопок --- */
+.footer-icon img {
+    width: 60%;
+    height: 60%;
+    transition: transform 0.3s ease;
+}
+
+/* --- Эффект при наведении --- */
+.footer-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-icon:hover img {
+    transform: scale(1.2);
+}
+
+/* --- Нижний текст с копирайтом --- */
+.footer-bottom-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 15px;
+    font-size: 14px;
+    color: #666;
+    border-top: 1px solid #ddd;
+}
+
+/* --- Политика конфиденциальности --- */
+.footer-privacy {
+    text-decoration: none;
+    color: #666;
+}
+
+.footer-privacy:hover {
+    text-decoration: underline;
+}
+
+/* --- Адаптация под мобильные устройства --- */
+@media (max-width: 768px) {
+    .footer-bottom-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .footer-logo-text {
+        font-size: 24px;
+    }
+
+    .footer-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .footer-icon img {
+        width: 55%;
+        height: 55%;
     }
 }

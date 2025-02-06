@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Аренда яхт</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="#">YachtRent</a>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#hero">Главный экран</a></li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#catalog">Каталог яхт</a></li>
+          <li><a href="#advantages">Преимущества</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="social-icons">
+        <a href="https://wa.me/вашномер" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://t.me/вашusername" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
+      </div>
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Аренда яхт класса люкс</h1>
+      <p>Наслаждайтесь морскими путешествиями с комфортом</p>
+      <a href="#catalog" class="btn">Выбрать яхту</a>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-content">
+        <h2>О нас</h2>
+        <p class="subtitle">Лучший сервис аренды яхт и катеров в Санкт-Петербурге!</p>
+        <p class="description">
+          Добро пожаловать в YachtRent — ваш надежный партнер в мире морских приключений! Мы предлагаем уникальные возможности для аренды яхт и катеров в Санкт-Петербурге. Вступайте в наши ряды и наслаждайтесь лучшим сервисом на воде.
+        </p>
+        <div class="features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <p>Самые выгодные цены в Санкт-Петербурге</p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-ship"></i>
+            <p>Самый большой выбор судов без наценок посредников</p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-bolt"></i>
+            <p>Скоростные катера для ярких и запоминающихся прогулок</p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-heart"></i>
+            <p>Яхты для роскошного или романтичного отдыха</p>
+          </div>
+        </div>
+        <p class="hashtags">
+          #катерарендаспб #арендаяхты #арендаяхтыспб #арендаяхтыпетербург #арендаяхтынасвадьбу #яхтаспб
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  
+
+  <div class="catalog">
+    <h2>Каталог яхт</h2>
+    <div class="yacht-list">
+        
+        <div class="yacht-card">
+            <div class="yacht-image" onmouseover="startSlider(this)" onmouseout="stopSlider(this)">
+                <img src="https://source.unsplash.com/300x200/?yacht,1" alt="Яхта 1">
+                <img src="https://source.unsplash.com/300x200/?yacht,2" alt="Яхта 1">
+                <img src="https://source.unsplash.com/300x200/?yacht,3" alt="Яхта 1">
+            </div>
+            <div class="yacht-info">
+                <h3>Yacht Lux 500</h3>
+                <p class="price">15 000 ₽/час</p>
+                <p class="description">Роскошная яхта с просторной палубой и VIP-каютами.</p>
+                <a href="#" class="view-button">Просмотреть</a>
+            </div>
+        </div>
+
+        <div class="yacht-card">
+            <div class="yacht-image" onmouseover="startSlider(this)" onmouseout="stopSlider(this)">
+                <img src="https://source.unsplash.com/300x200/?yacht,4" alt="Яхта 2">
+                <img src="https://source.unsplash.com/300x200/?yacht,5" alt="Яхта 2">
+                <img src="https://source.unsplash.com/300x200/?yacht,6" alt="Яхта 2">
+            </div>
+            <div class="yacht-info">
+                <h3>Ocean Dream 720</h3>
+                <p class="price">20 000 ₽/час</p>
+                <p class="description">Идеальный вариант для вечеринок и морских прогулок.</p>
+                <a href="#" class="view-button">Просмотреть</a>
+            </div>
+        </div>
+
+        <div class="yacht-card">
+            <div class="yacht-image" onmouseover="startSlider(this)" onmouseout="stopSlider(this)">
+                <img src="https://source.unsplash.com/300x200/?yacht,7" alt="Яхта 3">
+                <img src="https://source.unsplash.com/300x200/?yacht,8" alt="Яхта 3">
+                <img src="https://source.unsplash.com/300x200/?yacht,9" alt="Яхта 3">
+            </div>
+            <div class="yacht-info">
+                <h3>Sea Breeze 360</h3>
+                <p class="price">12 000 ₽/час</p>
+                <p class="description">Уютная яхта для семейного отдыха и романтических прогулок.</p>
+                <a href="#" class="view-button">Просмотреть</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка "Все яхты" -->
+    <div class="all-yachts-wrapper">
+        <a href="#" class="all-yachts-button">Все яхты</a>
+    </div>
+</div>
+
+<!-- преимущества -->
+
+<div class="advantages">
+    <h2>Наши преимущества</h2>
+    <div class="advantages-list">
+        <div class="advantage">
+            <img src="https://img.icons8.com/ios-filled/100/FFC107/star.png" alt="Премиум качество">
+            <h3>Премиум качество</h3>
+            <p>Современные и роскошные яхты с первоклассным сервисом.</p>
+        </div>
+
+        <div class="advantage">
+            <img src="https://img.icons8.com/ios-filled/100/FFC107/guarantee.png" alt="Надежность">
+            <h3>100% Надежность</h3>
+            <p>Все яхты проходят регулярное техобслуживание и соответствуют стандартам безопасности.</p>
+        </div>
+
+        <div class="advantage">
+            <img src="https://img.icons8.com/ios-filled/100/FFC107/clock.png" alt="Гибкий график">
+            <h3>Гибкий график</h3>
+            <p>Аренда в любое удобное для вас время — днем или ночью.</p>
+        </div>
+
+        <div class="advantage">
+            <img src="https://img.icons8.com/ios-filled/100/FFC107/customer-support.png" alt="Поддержка 24/7">
+            <h3>Поддержка 24/7</h3>
+            <p>Мы всегда на связи и готовы помочь с любыми вопросами.</p>
+        </div>
+
+        <div class="advantage">
+            <img src="https://img.icons8.com/ios-filled/100/FFC107/discount.png" alt="Гибкие цены">
+            <h3>Гибкие цены</h3>
+            <p>Лучшие условия аренды и выгодные предложения для постоянных клиентов.</p>
+        </div>
+
+        <div class="advantage">
+            <img src="https://img.icons8.com/ios-filled/100/FFC107/marker.png" alt="Лучшие маршруты">
+            <h3>Лучшие маршруты</h3>
+            <p>Уникальные морские прогулки и захватывающие маршруты.</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="reviews">
+    <h2>Отзывы клиентов</h2>
+    
+    <div class="carousel">
+        <button class="prev" onclick="prevReview()">&#10094;</button>
+
+        <div class="review-container">
+            <div class="review active">
+                <p class="stars">★★★★★</p>
+                <h3>Александр П.</h3>
+                <p>"Прекрасный сервис! Арендовали яхту на день рождения — всё на высшем уровне!"</p>
+            </div>
+            <div class="review">
+                <p class="stars">★★★★☆</p>
+                <h3>Мария К.</h3>
+                <p>"Очень красивые маршруты, чистая яхта, внимательный экипаж!"</p>
+            </div>
+            <div class="review">
+                <p class="stars">★★★★★</p>
+                <h3>Олег С.</h3>
+                <p>"Уютная атмосфера и шикарный вид на закат, рекомендую!"</p>
+            </div>
+            <div class="review">
+                <p class="stars">★★★☆☆</p>
+                <h3>Наталья В.</h3>
+                <p>"Все понравилось, но хотелось бы больше дополнительных услуг."</p>
+            </div>
+            <div class="review">
+                <p class="stars">★★★★★</p>
+                <h3>Дмитрий Л.</h3>
+                <p>"Яхта в идеальном состоянии, персонал вежливый, остался доволен!"</p>
+            </div>
+            <div class="review">
+                <p class="stars">★★★★☆</p>
+                <h3>Екатерина М.</h3>
+                <p>"Отличный выбор для романтического вечера на воде!"</p>
+            </div>
+            <div class="review">
+                <p class="stars">★★★★★</p>
+                <h3>Сергей Г.</h3>
+                <p>"Быстрое бронирование, удобные условия, шикарный отдых!"</p>
+            </div>
+            <div class="review">
+                <p class="stars">★★★★☆</p>
+                <h3>Ирина Д.</h3>
+                <p>"Незабываемая прогулка по морю! Всё на высшем уровне."</p>
+            </div>
+            <div class="review">
+                <p class="stars">★★★★★</p>
+                <h3>Владимир Е.</h3>
+                <p>"Приезжаем уже второй раз — сервис неизменно хороший!"</p>
+            </div>
+            <div class="review">
+                <p class="stars">★★★★★</p>
+                <h3>Анна Р.</h3>
+                <p>"Комфортная яхта, профессиональная команда, всё супер!"</p>
+            </div>
+        </div>
+
+        <button class="next" onclick="nextReview()">&#10095;</button>
+    </div>
+
+    <div class="review-button-wrapper">
+        <a href="https://www.avito.ru/profile/reviews" class="review-button" target="_blank">Оставить отзыв</a>
+    </div>
+</div>
+
+
+<div class="contacts">
+    <h2>Свяжитесь с нами</h2>
+
+    <div class="contacts-container">
+        <!-- Правая колонка (Форма заявки) -->
+        <div class="contact-form">
+            <h3>Оставить заявку</h3>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Ваше имя" required>
+                <input type="tel" id="phone" placeholder="Ваш телефон" required>
+                <textarea id="message" placeholder="Комментарий"></textarea>
+                <button type="submit">Отправить заявку</button>
+            </form>
+        </div>
+
+        <!-- Левая колонка (Контактные данные) -->
+        <div class="contact-info">
+            <h3>Контактные данные</h3>
+            <div class="contact-item">
+                <img src="https://img.icons8.com/ios-filled/50/FFC107/phone.png" alt="Телефон">
+                <a href="tel:+79123456789">+7 (912) 345-67-89</a>
+            </div>
+            <div class="contact-item">
+                <img src="https://img.icons8.com/ios-filled/50/FFC107/email.png" alt="Email">
+                <a href="mailto:info@yachtclub.com">info@yachtclub.com</a>
+            </div>
+            <div class="contact-item">
+                <img src="https://img.icons8.com/ios-filled/50/FFC107/avito.png" alt="Авито">
+                <a href="https://www.avito.ru/profile" target="_blank">Наш профиль на Авито</a>
+            </div>
+            <div class="contact-item">
+                <img src="https://img.icons8.com/ios-filled/50/FFC107/vk-circled.png" alt="ВКонтакте">
+                <a href="https://vk.com/yachtclub" target="_blank">vk.com/yachtclub</a>
+            </div>
+            <div class="contact-item">
+                <img src="https://img.icons8.com/ios-filled/50/FFC107/telegram-app.png" alt="Telegram">
+                <a href="https://t.me/yachtclub" target="_blank">@yachtclub</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

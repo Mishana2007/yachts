@@ -8,40 +8,51 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="logo">
-        <a href="#">YachtRent</a>
-      </div>
-      <nav class="nav">
-        <ul class="nav-list">
-          <li><a href="#hero">Главный экран</a></li>
-          <li><a href="#about">О нас</a></li>
-          <li><a href="#catalog">Каталог яхт</a></li>
-          <li><a href="#advantages">Преимущества</a></li>
-          <li><a href="#reviews">Отзывы</a></li>
-          <li><a href="#contact">Контакты</a></li>
-        </ul>
-      </nav>
-      <div class="social-icons">
-        <a href="https://wa.me/вашномер" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://t.me/вашusername" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
-      </div>
-      <div class="menu-toggle" id="mobile-menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-    </div>
-  </header>
-
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <h1>Аренда яхт класса люкс</h1>
-      <p>Наслаждайтесь морскими путешествиями с комфортом</p>
-      <a href="#catalog" class="btn">Выбрать яхту</a>
-    </div>
-  </section>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Аренда яхт</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      </head>
+      <body>
+        <header class="header">
+          <div class="container">
+            <div class="logo">
+              <a href="#">BREEZE</a> <!-- Изменена надпись на "BREEZE" -->
+            </div>
+            <nav class="nav">
+              <ul class="nav-list">
+                <li><a href="#hero">Главный экран</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#catalog">Каталог яхт</a></li>
+                <li><a href="#advantages">Преимущества</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#contact">Контакты</a></li>
+              </ul>
+            </nav>
+            <div class="social-icons">
+              <!-- Добавлены иконки для WhatsApp и Telegram -->
+              <a href="https://wa.me/вашномер" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://t.me/вашusername" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+        </header>
+      
+        <!-- Остальная часть контента остается без изменений -->
+        <section class="hero" id="hero">
+          <div class="hero-content">
+            <h1>Аренда яхт класса люкс</h1>
+            <p>Наслаждайтесь морскими путешествиями с комфортом</p>
+            <a href="#catalog" class="btn">Выбрать яхту</a>
+          </div>
+        </section>
+      
 
   <section class="about" id="about">
     <div class="container">
@@ -79,58 +90,82 @@
 
   
 
-  <div class="catalog">
-    <h2>Каталог яхт</h2>
-    <div class="yacht-list">
+  <section class="catalog" id="catalog">
+    <h2 class="catalog-title">Каталог яхт</h2>
+    <div class="yacht-grid">
         
-        <div class="yacht-card">
-            <div class="yacht-image" onmouseover="startSlider(this)" onmouseout="stopSlider(this)">
-                <img src="https://source.unsplash.com/300x200/?yacht,1" alt="Яхта 1">
-                <img src="https://source.unsplash.com/300x200/?yacht,2" alt="Яхта 1">
-                <img src="https://source.unsplash.com/300x200/?yacht,3" alt="Яхта 1">
+        <div class="yacht-item">
+            <div class="yacht-photo">
+                <img src="yacht-background.png" alt="Blueberry">
             </div>
-            <div class="yacht-info">
-                <h3>Yacht Lux 500</h3>
-                <p class="price">15 000 ₽/час</p>
-                <p class="description">Роскошная яхта с просторной палубой и VIP-каютами.</p>
-                <a href="#" class="view-button">Просмотреть</a>
-            </div>
-        </div>
-
-        <div class="yacht-card">
-            <div class="yacht-image" onmouseover="startSlider(this)" onmouseout="stopSlider(this)">
-                <img src="https://source.unsplash.com/300x200/?yacht,4" alt="Яхта 2">
-                <img src="https://source.unsplash.com/300x200/?yacht,5" alt="Яхта 2">
-                <img src="https://source.unsplash.com/300x200/?yacht,6" alt="Яхта 2">
-            </div>
-            <div class="yacht-info">
-                <h3>Ocean Dream 720</h3>
-                <p class="price">20 000 ₽/час</p>
-                <p class="description">Идеальный вариант для вечеринок и морских прогулок.</p>
-                <a href="#" class="view-button">Просмотреть</a>
+            <div class="yacht-details">
+                <h3>BLUEBERRY</h3>
+                <p class="yacht-price">от <strong>14 000 ₽</strong>/час</p>
+                <ul class="yacht-features">
+                    <li>🎵 Аудиосистема</li>
+                    <li>🔥 Камин</li>
+                    <li>🛏 Одеяла</li>
+                    <li>🌅 Панорамный тент</li>
+                    <li>🚻 Санузел</li>
+                    <li>🍾 Барная стойка</li>
+                </ul>
+                <div class="yacht-actions">
+                    <a href="#" class="yacht-btn info">Подробнее</a>
+                    <a href="#" class="yacht-btn book">Забронировать</a>
+                </div>
             </div>
         </div>
 
-        <div class="yacht-card">
-            <div class="yacht-image" onmouseover="startSlider(this)" onmouseout="stopSlider(this)">
-                <img src="https://source.unsplash.com/300x200/?yacht,7" alt="Яхта 3">
-                <img src="https://source.unsplash.com/300x200/?yacht,8" alt="Яхта 3">
-                <img src="https://source.unsplash.com/300x200/?yacht,9" alt="Яхта 3">
+        <div class="yacht-item">
+            <div class="yacht-photo">
+                <img src="yacht-background.png" alt="Ocean Breeze">
             </div>
-            <div class="yacht-info">
-                <h3>Sea Breeze 360</h3>
-                <p class="price">12 000 ₽/час</p>
-                <p class="description">Уютная яхта для семейного отдыха и романтических прогулок.</p>
-                <a href="#" class="view-button">Просмотреть</a>
+            <div class="yacht-details">
+                <h3>OCEAN BREEZE</h3>
+                <p class="yacht-price">от <strong>16 000 ₽</strong>/час</p>
+                <ul class="yacht-features">
+                    <li>🎵 Стереосистема</li>
+                    <li>🔥 Гриль</li>
+                    <li>💡 Неоновая подсветка</li>
+                    <li>🎪 Навес</li>
+                    <li>🚻 Душ и туалет</li>
+                    <li>🍸 Коктейльный бар</li>
+                </ul>
+                <div class="yacht-actions">
+                    <a href="#" class="yacht-btn info">Подробнее</a>
+                    <a href="#" class="yacht-btn book">Забронировать</a>
+                </div>
             </div>
         </div>
+
+        <div class="yacht-item">
+            <div class="yacht-photo">
+                <img src="yacht-background.png" alt="Sea Legend">
+            </div>
+            <div class="yacht-details">
+                <h3>SEA LEGEND</h3>
+                <p class="yacht-price">от <strong>18 000 ₽</strong>/час</p>
+                <ul class="yacht-features">
+                    <li>🎵 Bluetooth-саунд</li>
+                    <li>🛏 Просторные лежаки</li>
+                    <li>🎪 Раздвижной тент</li>
+                    <li>🚻 Удобства</li>
+                    <li>🍷 Винный шкаф</li>
+                    <li>🎬 Проектор для кино</li>
+                </ul>
+                <div class="yacht-actions">
+                    <a href="#" class="yacht-btn info">Подробнее</a>
+                    <a href="#" class="yacht-btn book">Забронировать</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Кнопка "Все яхты" -->
-    <div class="all-yachts-wrapper">
-        <a href="#" class="all-yachts-button">Все яхты</a>
+    <div class="yacht-all">
+        <a href="#" class="yacht-btn all">Все яхты</a>
     </div>
-</div>
+</section>
 
 <!-- преимущества -->
 

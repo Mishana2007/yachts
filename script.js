@@ -1,100 +1,206 @@
-// Мобильное меню
-const mobileMenu = document.getElementById('mobile-menu');
-const nav = document.querySelector('.nav');
+document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".menu-btn"); // Изменено на твой класс
+    const closeMenuButton = document.getElementById("close-menu");
+    const overlay = document.getElementById("overlay");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-mobileMenu.addEventListener('click', () => {
-  mobileMenu.classList.toggle('active');
-  nav.classList.toggle('active');
+    // Проверяем, существуют ли элементы перед добавлением событий
+    if (menuButton && closeMenuButton && overlay && mobileMenu) {
+        // Функция открытия меню
+        function openMenu() {
+            mobileMenu.classList.add("active");
+            overlay.classList.add("active");
+        }
+
+        // Функция закрытия меню
+        function closeMenu() {
+            mobileMenu.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+
+        // Назначаем события
+        menuButton.addEventListener("click", openMenu); // Теперь работает по .menu-btn
+        closeMenuButton.addEventListener("click", closeMenu);
+        overlay.addEventListener("click", closeMenu);
+    } else {
+        console.error("❌ Ошибка: Один или несколько элементов меню не найдены в DOM.");
+    }
 });
 
-// Фиксация шапки при скролле
-window.addEventListener('scroll', () => {
-  const header = document.querySelector('.header');
-  header.classList.toggle('scrolled', window.scrollY > 50);
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//     const rentButtons = document.querySelectorAll(".btn-rent");
 
+//     rentButtons.forEach(button => {
+//         button.addEventListener("click", function (event) {
+//             event.preventDefault();
+//             alert("Функция аренды пока недоступна. Свяжитесь с менеджером!");
+//         });
+//     });
+// });
 
-function startSlider(yacht) {
-    let images = yacht.querySelectorAll("img");
-    let index = 0;
+document.addEventListener("DOMContentLoaded", function () {
+    const rentButtons = document.querySelectorAll(".btn-rent");
+    const modal = document.getElementById("booking-popup");
+    const overlay = document.getElementById("popup-overlay");
+    const closeModal = document.getElementById("booking-close");
+    const submitBtn = document.getElementById("submit-btn");
+    const policyCheckbox = document.getElementById("policy");
+    const bookingForm = document.getElementById("booking-form");
+    const boatImage = document.getElementById("booking-boat-img");
+    const boatName = document.getElementById("booking-boat-name");
 
-    yacht.dataset.interval = setInterval(() => {
-        images.forEach((img, i) => img.style.opacity = i === index ? "1" : "0");
-        index = (index + 1) % images.length;
-    }, 1500);
-}
+    // ДАННЫЕ ТЕЛЕГРАМ-БОТА
+    const TELEGRAM_BOT_TOKEN = "5807422883:AAGkbgd6-bUeFRkguNHaJwZ77auV1XjAV7c";  // Вставь сюда токен бота
+    const TELEGRAM_CHAT_ID = "1301142907"; // Вставь сюда ID канала (с -100 в начале, если приватный)
 
-function stopSlider(yacht) {
-    clearInterval(yacht.dataset.interval);
-    let images = yacht.querySelectorAll("img");
-    images.forEach((img, i) => img.style.opacity = i === 0 ? "1" : "0");
-}
+    // Открытие модального окна
+    rentButtons.forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            const boatCard = this.closest(".catalog-item");
+            const boatImgSrc = boatCard.querySelector(".catalog-image img").src;
+            const boatTitle = boatCard.querySelector("h3").textContent;
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".yacht-image img:first-child").forEach(img => img.style.opacity = "1");
+            boatImage.src = boatImgSrc;
+            boatName.textContent = boatTitle;
+
+            modal.classList.add("active");
+            overlay.classList.add("active");
+        });
+    });
+
+    // Закрытие окна
+    closeModal.addEventListener("click", closeBooking);
+    overlay.addEventListener("click", closeBooking);
+
+    function closeBooking() {
+        modal.classList.remove("active");
+        overlay.classList.remove("active");
+        submitBtn.textContent = "Отправить заявку"; // Сбрасываем кнопку
+        submitBtn.classList.remove("loading"); // Убираем состояние загрузки
+        submitBtn.removeAttribute("disabled"); // Включаем кнопку
+    }
+
+    // Активация кнопки "Отправить заявку" только при согласии с политикой
+    policyCheckbox.addEventListener("change", function () {
+        if (this.checked) {
+            submitBtn.classList.add("active");
+            submitBtn.removeAttribute("disabled");
+        } else {
+            submitBtn.classList.remove("active");
+            submitBtn.setAttribute("disabled", "true");
+        }
+    });
+
+    // Отправка заявки в Telegram
+    bookingForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (submitBtn.disabled) return; // Если кнопка уже нажата – выходим
+
+        const userName = document.getElementById("name").value.trim();
+        const userPhone = document.getElementById("phone").value.trim();
+        const userComment = document.getElementById("comment").value.trim();
+        const boatTitle = boatName.textContent;
+
+        if (!userName || !userPhone) {
+            alert("Заполните имя и телефон!");
+            return;
+        }
+
+        // Блокируем кнопку во время отправки
+        submitBtn.textContent = "Отправка...";
+        submitBtn.classList.add("loading");
+        submitBtn.setAttribute("disabled", "true");
+
+        // Формируем текст сообщения
+        const message = `
+🚤 *Новая заявка на аренду!*
+🛥️ Яхта: *${boatTitle}*
+👤 Имя: *${userName}*
+📞 Телефон: *${userPhone}*
+📝 Комментарий: ${userComment || "Не указан"}
+        `;
+
+        // Отправляем данные в Telegram через API
+        fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message,
+                parse_mode: "Markdown"
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                alert("✅ Заявка успешно отправлена!");
+                bookingForm.reset();
+                closeBooking();
+            } else {
+                alert("❌ Ошибка при отправке. Попробуйте снова.");
+                submitBtn.textContent = "Отправить заявку";
+                submitBtn.classList.remove("loading");
+                submitBtn.removeAttribute("disabled");
+            }
+        })
+        .catch(error => {
+            console.error("Ошибка:", error);
+            alert("❌ Ошибка при отправке. Попробуйте позже.");
+            submitBtn.textContent = "Отправить заявку";
+            submitBtn.classList.remove("loading");
+            submitBtn.removeAttribute("disabled");
+        });
+    });
 });
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const advantages = document.querySelectorAll(".advantage");
+    const reviewContainer = document.querySelector(".reviews-container");
+    
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-    function showAdvantages() {
-        advantages.forEach((adv, index) => {
-            const rect = adv.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 50) {
-                setTimeout(() => {
-                    adv.style.opacity = "1";
-                    adv.style.transform = "translateY(0)";
-                }, index * 150);
-            }
+    // Начало перетаскивания
+    reviewContainer.addEventListener("mousedown", (e) => {
+        isDown = true;
+        reviewContainer.classList.add("active");
+        startX = e.pageX - reviewContainer.offsetLeft;
+        scrollLeft = reviewContainer.scrollLeft;
+    });
+
+    // Конец перетаскивания
+    reviewContainer.addEventListener("mouseleave", () => {
+        isDown = false;
+        reviewContainer.classList.remove("active");
+    });
+
+    reviewContainer.addEventListener("mouseup", () => {
+        isDown = false;
+        reviewContainer.classList.remove("active");
+        snapToNearest();
+    });
+
+    // Движение по оси X
+    reviewContainer.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - reviewContainer.offsetLeft;
+        const walk = (x - startX) * 2; // Скорость прокрутки
+        reviewContainer.scrollLeft = scrollLeft - walk;
+    });
+
+    // Функция фиксации отзыва
+    function snapToNearest() {
+        const reviewWidth = 340; // Фиксированная ширина карточки + отступы
+        const scrollPosition = reviewContainer.scrollLeft;
+        const nearestReview = Math.round(scrollPosition / reviewWidth) * reviewWidth;
+        
+        reviewContainer.scrollTo({
+            left: nearestReview,
+            behavior: "smooth"
         });
     }
-
-    window.addEventListener("scroll", showAdvantages);
-    showAdvantages();
-});
-
-
-let currentReview = 0;
-const reviews = document.querySelectorAll(".review");
-
-function showReview(index) {
-    reviews.forEach((review, i) => {
-        review.classList.remove("active");
-        if (i === index) {
-            review.classList.add("active");
-        }
-    });
-}
-
-function nextReview() {
-    currentReview = (currentReview + 1) % reviews.length;
-    showReview(currentReview);
-}
-
-function prevReview() {
-    currentReview = (currentReview - 1 + reviews.length) % reviews.length;
-    showReview(currentReview);
-}
-
-// Показываем первый отзыв
-showReview(currentReview);
-
-
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let message = document.getElementById("message").value;
-
-    console.log("Заявка отправлена:");
-    console.log("ФИО:", name);
-    console.log("Телефон:", phone);
-    console.log("Комментарий:", message);
-
-    alert("✅ Ваша заявка успешно отправлена!");
-    
-    // Очистка формы
-    document.getElementById("contactForm").reset();
 });

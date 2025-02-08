@@ -1,1296 +1,849 @@
-/* Общие стили */
-body {
+* {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .container {
-    width: 90%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  /* Шапка */
-  .header {
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-menu a {
+    color: #4b5563;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #2563eb;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    color: #4b5563;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.social-icons a:hover {
+    color: #2563eb;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #4b5563;
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 768px) {
+.mobile-menu {
+right: -100%;
+max-width: 80%;
+height: auto;
+}
+
+.mobile-menu.active {
+right: 5%;
+}
+
+.mobile-menu-content a {
+font-size: 1.1rem;
+}
+}
+
+/* .mobile-menu {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 15px 0;
-    z-index: 1000;
-    transition: background 0.3s ease, padding 0.3s ease;
-  }
-  
-  .header.scrolled {
-    background: rgba(0, 0, 0, 0.9);
-    padding: 10px 0;
-  }
-  
-  .logo a {
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .logo a:hover {
-    color: #ffcc00;
-  }
-  
-  .nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  .nav-list li {
-    margin-left: 25px;
-    position: relative;
-  }
-  
-  .nav-list a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease;
-    padding: 5px 0;
-  }
-  
-  .nav-list a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #ffcc00;
-    transition: width 0.3s ease;
-  }
-  
-  .nav-list a:hover::after {
-    width: 100%;
-  }
-  
-  .nav-list a:hover {
-    color: #ffcc00;
-  }
-  
-  .social-icons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .social-icons a {
-    font-size: 24px;
-    color: #FFC107; /* Цвет иконок */
-    text-decoration: none;
-  }
-  
-  .social-icons a:hover {
-    color: #FFD700; /* Цвет при наведении */
-  }
-  
-  /* Мобильное меню */
-  .menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  
-  .bar {
-    width: 25px;
-    height: 3px;
-    background: #fff;
-    margin: 4px 0;
-    transition: all 0.3s ease;
-  }
-
-
-
-  /* --- Главный экран (баннер) --- */
-.main-banner {
-    position: relative;
-    width: 100%;
-    height: 75vh; /* Высота экрана */
-    overflow: hidden;
-}
-
-/* Затемняющий слой для контраста */
-.banner-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+    right: -100%;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
+    background: white;
+    z-index: 999;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+} */
+
+/* .mobile-menu.active {
+    right: 0;
+} */
+
+/* Затемняющая подложка */
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5);
+backdrop-filter: blur(5px);
+z-index: 998;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease;
 }
 
-/* Фото яхты */
-.banner-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+/* Активное состояние подложки */
+.overlay.active {
+opacity: 1;
+visibility: visible;
 }
 
-/* --- Текст на баннере --- */
-.banner-title {
-    font-size: 32px;
-    font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 10px;
+/* Контейнер мобильного меню */
+.mobile-menu {
+position: fixed;
+top: 50%;
+right: -350px; /* Начальное положение за экраном */
+width: auto; /* Автоматическая ширина */
+max-width: 350px; /* Ограничение ширины */
+background: white;
+z-index: 999;
+transition: right 0.4s ease-in-out, transform 0.4s ease-in-out;
+box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+padding: 1.5rem;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: flex-start;
+border-radius: 15px 0 0 15px; /* Закругленные углы слева */
+transform: translateY(-50%);
 }
 
-.banner-subtitle {
-    font-size: 18px;
-    font-weight: 400;
-    color: #f1f1f1;
-    max-width: 600px;
-    font-family: 'Poppins', sans-serif;
-    margin-bottom: 20px;
+/* Активное состояние меню (выезжает) */
+.mobile-menu.active {
+right: 0;
 }
 
-/* --- Кнопка "Выбрать яхту" --- */
-.banner-btn {
-    display: inline-block;
-    background: #FFC107;
-    color: #222;
-    padding: 12px 24px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 6px;
-    text-decoration: none;
-    text-transform: uppercase;
-    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
-    transition: all 0.3s ease;
+/* Содержимое меню */
+.mobile-menu-content {
+display: flex;
+flex-direction: column;
+gap: 1rem;
 }
 
-.banner-btn:hover {
-    background: #FFA000;
-    box-shadow: 0 6px 12px rgba(255, 193, 7, 0.5);
-    transform: translateY(-3px);
+.mobile-menu-content a {
+display: block;
+color: #4b5563;
+font-size: 1.2rem;
+text-decoration: none;
+padding: 0.8rem 1rem;
+border-bottom: 1px solid #e5e7eb;
+transition: color 0.3s ease;
 }
 
-/* --- Адаптация под мобильные устройства --- */
-@media (max-width: 768px) {
-    .main-banner {
-        height: 50vh; /* Делаем фото меньше */
-    }
-
-    .banner-title {
-        font-size: 24px;
-    }
-
-    .banner-subtitle {
-        font-size: 16px;
-    }
-
-    .banner-btn {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
+.mobile-menu-content a:hover {
+color: #2563eb;
 }
-  
-  /* Главный экран */
-  .hero {
+
+/* Кнопка закрытия меню */
+.close-menu {
+position: absolute;
+top: 10px;
+right: 10px;
+background: none;
+border: none;
+font-size: 24px;
+cursor: pointer;
+color: #4b5563;
+transition: color 0.3s ease;
+}
+
+.close-menu:hover {
+color: #2563eb;
+}
+
+/* Кнопка открытия меню */
+.menu-button {
+position: fixed;
+top: 20px;
+right: 20px;
+background: none;
+border: none;
+font-size: 24px;
+cursor: pointer;
+z-index: 1000;
+}
+
+.hero-section {
+    position: relative;
     height: 100vh;
-    background: url('yacht-background.png') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('yacht-background.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
     text-align: center;
-    color: #fff;
-  }
-  
-  .hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-  }
-  
-  .hero-content p {
-    font-size: 24px;
-    margin-bottom: 30px;
-  }
-  
-  .btn {
-    background: #ffcc00;
-    color: #000;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-  }
-  
-  .btn:hover {
-    background: #e6b800;
-  }
-  
-  /* Адаптация для мобильных устройств */
-  @media (max-width: 768px) {
-    .nav {
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: 80%;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.9);
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transition: left 0.3s ease;
-    }
-  
-    .nav.active {
-      left: 0;
-    }
-  
-    .nav-list {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .nav-list li {
-      margin: 15px 0;
-    }
-  
-    .menu-toggle {
-      display: flex;
-    }
-  
-    .menu-toggle.active .bar:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-  
-    .menu-toggle.active .bar:nth-child(2) {
-      opacity: 0;
-    }
-  
-    .menu-toggle.active .bar:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-  
-    .social-icons {
-        position: fixed;
-        top: 20px;
-        right: 60px; /* Сдвигаем иконки немного влево, чтобы они не перекрывали меню */
-        z-index: 999;
-      }
-      .social-icons a {
-        font-size: 28px; /* Увеличим размер иконок для мобильных */
-      }
-  }
+    padding: 1rem;
+}
 
+.hero-content {
+    max-width: 800px;
+}
 
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
 
-/* о нас  */
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.advantages {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.advantage-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.advantage-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .nav-menu, .social-icons.desktop {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .mobile-controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .social-icons.mobile {
+        display: flex;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .advantages {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .advantage-card {
+        padding: 1rem;
+    }
+
+    .advantage-card i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .advantage-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .advantage-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .social-icons.mobile {
+        display: none;
+    }
+}
+
 
 /* Блок "О нас" */
 .about {
-    padding: 80px 0;
-    background: #fff;
-    color: #333;
-  }
-  
-  .about-content {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .about h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #222;
-    animation: fadeInDown 1s ease;
-  }
-  
-  .about .subtitle {
-    font-size: 20px;
-    color: #555;
-    margin-bottom: 30px;
-    animation: fadeIn 1.5s ease;
-  }
-  
-  .about .description {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #666;
-    margin-bottom: 40px;
-    animation: fadeIn 2s ease;
-  }
-  
-  .features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 40px;
-  }
-  
-  .feature-item {
-    flex: 1 1 200px;
-    max-width: 250px;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeInUp 1s ease;
-  }
-  
-  .feature-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .feature-item i {
-    font-size: 32px;
-    color: #ffcc00;
-    margin-bottom: 15px;
-    display: block;
-  }
-  
-  .feature-item p {
-    font-size: 16px;
-    color: #444;
-    margin: 0;
-  }
-  
-  .hashtags {
-    font-size: 14px;
-    color: #777;
-    animation: fadeIn 2.5s ease;
-  }
-  
-  /* Анимации */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-
-  @media (max-width: 768px) {
-    .features {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .feature-item {
-      max-width: 100%;
-    }
-  }
-
-
-  /* Общие стили каталога */
-.catalog {
-    text-align: center;
-    padding: 60px 20px;
-    background: #fff;
-}
-
-.catalog-title {
-    font-size: 32px;
-    color: #222;
-    margin-bottom: 30px;
-}
-
-/* Сетка яхт */
-.yacht-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-}
-
-/* Карточка яхты */
-.yacht-item {
-    background: white;
-    width: 370px;
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.2); /* Жёлтая лёгкая тень */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.yacht-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(255, 193, 7, 0.5); /* Усиливаем жёлтую тень */
-}
-
-/* Фото яхты */
-.yacht-photo img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
-/* Детали яхты */
-.yacht-details {
-    padding: 20px;
-    text-align: left;
-    border-top: 4px solid #FFC107; /* Жёлтая линия сверху */
-}
-
-.yacht-details h3 {
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.yacht-price {
-    font-size: 18px;
-    color: #e74c3c;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-/* Список удобств */
-.yacht-features {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 15px 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.yacht-features li {
-    background: #fffae6; /* Светло-жёлтый фон для удобств */
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 14px;
-    color: #555;
-}
-
-/* Кнопки */
-.yacht-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 15px;
-}
-
-.yacht-btn {
-    flex: 1;
-    padding: 12px;
-    text-align: center;
-    font-size: 16px;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: 0.3s;
-}
-
-.yacht-btn.info {
-    background: #bdc3c7;
-    color: #333;
-}
-
-.yacht-btn.info {
-    background: #bdc3c7;
-    color: #333;
-}
-
-.yacht-btn.info:hover {
-    background: #95a5a6;
-}
-
-.yacht-btn.book {
-    background: #e74c3c;
-    color: white;
-}
-
-.yacht-btn.book:hover {
-    background: #c0392b;
-}
-
-
-/* Кнопка "Все яхты" */
-.yacht-all {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.yacht-btn.all:active {
-    transform: scale(0.95);
-    box-shadow: 0 3px 7px rgba(255, 193, 7, 0.3);
-}
-
-.yacht-btn.all {
-    display: inline-block;
-    background: #fff;
-    color: #222;
-    padding: 14px 24px;
-    font-size: 18px;
-    font-weight: bold;
-    border: 2px solid #FFC107;
-    animation: pulse 1.5s infinite ease-in-out;
-    border-radius: 8px;
-    text-transform: uppercase;
-    text-decoration: none;
-    box-shadow: 0 5px 10px rgba(255, 193, 7, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.yacht-btn.all:hover {
-    background: #FFC107;
-    color: #fff;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 15px rgba(255, 193, 7, 0.5);
-}
-
-
-/* Анимация небольшого подпрыгивания */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-/* Анимация пульсации */
-@keyframes pulse {
-    0% {
-        box-shadow: 0 5px 10px rgba(255, 193, 7, 0.3);
-    }
-    50% {
-        box-shadow: 0 10px 20px rgba(255, 193, 7, 0.5);
-    }
-    100% {
-        box-shadow: 0 5px 10px rgba(255, 193, 7, 0.3);
-    }
-}
-
-@media (max-width: 768px) {
-    .yacht-list {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-.all-yachts-wrapper {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.all-yachts-button {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-    background: linear-gradient(90deg, #ffcc00, #ffdd44, #ffcc00);
-    background-size: 200% 100%;
-    border-radius: 25px;
-    text-decoration: none;
-    transition: transform 0.3s ease, background-position 0.5s ease-in-out;
-}
-
-.all-yachts-button:hover {
-    transform: scale(1.05);
-    background-position: 100% 0;
-}
-
-
-
-.advantages {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.advantages h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
-    color: #333;
-}
-
-.advantages-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-}
-
-.advantage {
-    width: 30%;
-    min-width: 280px;
-    background: #fff9e6;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.advantage img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 15px;
-}
-
-.advantage h3 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.advantage p {
-    font-size: 14px;
-    color: #555;
-}
-
-@media (max-width: 768px) {
-    .advantage {
-        width: 45%;
-    }
-}
-
-@media (max-width: 480px) {
-    .advantage {
-        width: 100%;
-    }
-}
-
-
-.reviews {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.reviews h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.review-container {
-    width: 100%;
-    max-width: 600px;
-    overflow: hidden;
-    position: relative;
-}
-
-.review {
-    display: none;
-    background: #fff9e6;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.review.active {
-    display: block;
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.stars {
-    font-size: 20px;
-    color: #FFC107;
-    margin-bottom: 10px;
-}
-
-.carousel button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;
-    padding: 10px;
-    transition: 0.3s;
-}
-
-.carousel button:hover {
-    color: #FFC107;
-    transform: scale(1.2);
-}
-
-.review-button-wrapper {
-    margin-top: 20px;
-}
-
-.review-button {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-    background: linear-gradient(90deg, #ffcc00, #ffdd44, #ffcc00);
-    background-size: 200% 100%;
-    border-radius: 25px;
-    text-decoration: none;
-    transition: transform 0.3s ease, background-position 0.5s ease-in-out;
-}
-
-.review-button:hover {
-    transform: scale(1.05);
-    background-position: 100% 0;
-}
-
-@media (max-width: 480px) {
-    .review {
-        padding: 15px;
-    }
-}
-
-
-.contacts {
-    max-width: 1100px;
-    margin: 60px auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.contacts h2 {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    color: #333;
-}
-
-.contacts-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 50px;
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-}
-
-.contact-form {
-    flex: 1;
-    text-align: left;
-}
-
-.contact-form h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-input,
-textarea {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 12px;
-    border: 2px solid #ffcc00;
-    border-radius: 10px;
-    font-size: 16px;
-    transition: all 0.3s ease-in-out;
-}
-
-input:focus,
-textarea:focus {
-    border-color: #ff8800;
-    outline: none;
-}
-
-textarea {
-    height: 120px;
-    resize: none;
-}
-
-button {
-    padding: 14px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-    background: linear-gradient(90deg, #ffcc00, #ffdd44, #ffcc00);
-    background-size: 200% 100%;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-position 0.5s ease-in-out;
-}
-
-button:hover {
-    transform: scale(1.05);
-    background-position: 100% 0;
-}
-
-/* Контактная информация */
-.contact-info {
-    flex: 1;
-    text-align: left;
-}
-
-.contact-info h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.contact-item img {
-    width: 30px;
-    height: 30px;
-}
-
-.contact-item a {
-    font-size: 18px;
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.contact-item a:hover {
-    color: #ffcc00;
-}
-
-/* Адаптация для телефонов */
-@media (max-width: 768px) {
-    .contacts-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .contact-form {
-        width: 100%;
-        text-align: center;
-    }
-
-    .contact-info {
-        width: 100%;
-        text-align: center;
-        margin-top: 30px;
-        padding-top: 20px;
-        border-top: 2px solid #ffcc00;
-    }
-
-    .contact-item {
-        justify-content: center;
-    }
-
-    input,
-    textarea {
-        font-size: 14px;
-    }
-}
-
-
-
-
-/* новые */
-
-
-/* --- Каталог яхт --- */
-.boat-catalog {
-    text-align: center;
-    padding: 50px 20px;
-    background: #f8f8f8;
-}
-
-.boat-title {
-    font-size: 30px;
-    color: #222;
-    margin-bottom: 30px;
-}
-
-/* --- Сетка яхт --- */
-.boat-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-/* --- Карточка яхты --- */
-.boat-card {
-    background: white;
-    width: 360px;
-    border-radius: 12px;
-    overflow: hidden;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-position: relative;
-}
-
-.boat-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* — Фото яхты — */
-.boat-image {
-position: relative;
-}
-
-.boat-image img {
-width: 100%;
-height: 200px;
-object-fit: cover;
-}
-
-/* — Метки над фото (количество людей и статус) — */
-.boat-capacity, .boat-status {
-position: absolute;
-top: 10px;
-left: 10px;
-background: rgba(0, 0, 0, 0.7);
-color: white;
-padding: 5px 10px;
-border-radius: 5px;
-font-size: 14px;
-}
-
-.boat-status {
-background: #e74c3c; /* Красный для “Хит” */
-left: auto;
-right: 10px;
-}
-
-/* — Информация о яхте — */
-.boat-info {
-padding: 20px;
-text-align: left;
-}
-
-.boat-info h3 {
-font-size: 22px;
-margin-bottom: 10px;
-}
-
-.boat-price {
-font-size: 18px;
-color: #e67e22;
-font-weight: bold;
-margin-bottom: 15px;
-}
-
-/* — Кнопки “Подробнее” и “Арендовать” — */
-.boat-buttons {
-display: flex;
-gap: 8px;
-margin-bottom: 15px;
-}
-
-.boat-btn {
-flex: 1;
-padding: 10px;
-text-align: center;
-font-size: 16px;
-text-decoration: none;
-border-radius: 6px;
-transition: 0.3s;
-}
-
-.boat-btn.details {
-background: #bdc3c7;
+padding: 80px 0;
+background: #fff;
 color: #333;
 }
 
-.boat-btn.details:hover {
-background: #95a5a6;
+.about-content {
+text-align: center;
+max-width: 800px;
+margin: 0 auto;
 }
 
-.boat-btn.rent {
-background: #e74c3c;
-color: white;
+.about h2 {
+font-size: 36px;
+margin-bottom: 20px;
+color: #222;
+animation: fadeInDown 1s ease;
 }
 
-.boat-btn.rent:hover {
-background: #c0392b;
+.about .subtitle {
+font-size: 20px;
+color: #555;
+margin-bottom: 30px;
+animation: fadeIn 1.5s ease;
 }
 
-/* — Удобства на борту — */
-.boat-features {
+.about .description {
+font-size: 16px;
+line-height: 1.8;
+color: #666;
+margin-bottom: 40px;
+animation: fadeIn 2s ease;
+}
+
+.features {
 display: flex;
 flex-wrap: wrap;
-gap: 6px;
+justify-content: center;
+gap: 30px;
+margin-bottom: 40px;
+}
+
+.feature-item {
+flex: 1 1 200px;
+max-width: 250px;
+padding: 20px;
+background: #f9f9f9;
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+animation: fadeInUp 1s ease;
+}
+
+.feature-item:hover {
+transform: translateY(-10px);
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-item i {
+font-size: 32px;
+color: #ffcc00;
+margin-bottom: 15px;
+display: block;
+}
+
+.feature-item p {
+font-size: 16px;
+color: #444;
+margin: 0;
+}
+
+.hashtags {
+font-size: 14px;
+color: #777;
+animation: fadeIn 2.5s ease;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+
+@keyframes fadeInDown {
+from {
+opacity: 0;
+transform: translateY(-20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+
+@media (max-width: 768px) {
+.features {
+flex-direction: column;
+align-items: center;
+}
+
+.feature-item {
+max-width: 100%;
+}
+}
+
+
+
+/* Секция "Каталог" */
+.catalog {
+padding: 40px 20px;
+background: #f9f9f9; /* Светлый фон */
+}
+
+.catalog-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 10px;
+}
+
+.catalog-header h2 {
+font-size: 24px;
+font-weight: bold;
+color: #222;
+}
+
+.view-all {
+font-size: 16px;
+color: #222;
+text-decoration: none;
+display: flex;
+align-items: center;
+gap: 5px;
+}
+
+.view-all i {
 font-size: 14px;
 }
 
-.boat-features span {
-background: #f0e68c;
+/* Подзаголовок */
+.catalog-subtitle {
+font-size: 16px;
+color: #555;
+margin-bottom: 20px;
+}
+
+/* Список карточек */
+.catalog-list {
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+/* Карточка */
+.catalog-item {
+background: white;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Блок с изображением */
+.catalog-image {
+position: relative;
+}
+
+.catalog-image img {
+width: 100%;
+display: block;
+}
+
+.catalog-tag {
+position: absolute;
+top: 10px;
+left: 10px;
+background: black;
+color: white;
+font-size: 14px;
 padding: 5px 10px;
 border-radius: 5px;
 }
 
-/* — Кнопка “Все яхты” — */
-.boat-all {
-margin-top: 30px;
+.catalog-hit {
+position: absolute;
+top: 10px;
+right: 10px;
+background: red;
+color: white;
+font-size: 14px;
+padding: 5px 10px;
+border-radius: 5px;
 }
 
-.boat-btn.all {
-display: inline-block;
-background: #FFC107;
+/* Информация */
+.catalog-info {
+padding: 15px;
+}
+
+.catalog-info h3 {
+font-size: 20px;
+font-weight: bold;
+margin-bottom: 5px;
 color: #222;
-padding: 12px 24px;
+}
+
+.catalog-price {
 font-size: 18px;
 font-weight: bold;
-border-radius: 8px;
-text-transform: uppercase;
+color: #222;
+margin-bottom: 15px;
+}
+
+.catalog-price span {
+font-size: 22px;
+color: black;
+}
+
+/* Кнопки */
+.catalog-buttons {
+display: flex;
+gap: 10px;
+margin-bottom: 15px;
+}
+
+.btn-details,
+.btn-rent {
+flex: 1;
+text-align: center;
+padding: 10px;
+border-radius: 5px;
+font-size: 16px;
+font-weight: bold;
 text-decoration: none;
-box-shadow: 0 5px 10px rgba(255, 193, 7, 0.4);
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.boat-btn.all:hover {
-background: #FFA000;
-transform: translateY(-3px);
-box-shadow: 0 8px 15px rgba(255, 193, 7, 0.6);
-}
-
-/* — Адаптация под мобильные устройства — */
-@media (max-width: 768px) {
-.boat-list {
-flex-direction: column;
+display: flex;
+justify-content: center;
 align-items: center;
-}
-.boat-card {
-    width: 90%;
+gap: 5px;
 }
 
-.boat-btn {
-    font-size: 14px;
-    padding: 8px;
+.btn-details {
+background: #f0f0f0;
+color: black;
+}
+
+.btn-rent {
+background: #ffd700;
+color: black;
+}
+
+/* Иконки */
+.catalog-features {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+font-size: 14px;
+color: #555;
+}
+
+.catalog-features span {
+display: flex;
+align-items: center;
+gap: 5px;
+}
+
+/* Адаптация */
+@media (min-width: 768px) {
+.catalog-list {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
 }
 }
 
-/* --- Общий стиль кнопок --- */
-.boat-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+@media (min-width: 1024px) {
+.catalog {
+padding: 60px 80px;
 }
 
-.boat-btn {
-    flex: 1;
-    padding: 12px 15px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.catalog-header h2 {
+font-size: 28px;
 }
 
-/* --- Кнопка "Подробнее" --- */
-.boat-btn.details {
-    background: #f8f8f8;
-    color: #222;
-    border: 2px solid #d1d1d1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 18px;
+.catalog-list {
+grid-template-columns: repeat(3, 1fr);
+}
 }
 
-.boat-btn.details i {
-    font-size: 14px;
-    margin-left: 8px;
-    color: #777;
+/* Затемняющий фон */
+.popup-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5);
+backdrop-filter: blur(5px);
+z-index: 998;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease;
 }
 
-.boat-btn.details:hover {
-    background: #e0e0e0;
-    border-color: #bdbdbd;
+/* Активное состояние подложки */
+.popup-overlay.active {
+opacity: 1;
+visibility: visible;
 }
 
-/* --- Кнопка "Арендовать" --- */
-.boat-btn.rent {
-    background: #e74c3c;
-    color: white;
+/* Всплывающее окно бронирования */
+.booking-popup {
+position: fixed;
+top: 50%;
+left: 50%;
+width: 90%;
+max-width: 400px;
+background: white;
+border-radius: 15px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+transform: translate(-50%, -50%);
+z-index: 999;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease, transform 0.3s ease;
+padding: 20px;
+text-align: center;
 }
 
-.boat-btn.rent:hover {
-    background: #c0392b;
+/* Активное состояние окна */
+.booking-popup.active {
+opacity: 1;
+visibility: visible;
 }
 
-/* --- Адаптация под мобильные устройства --- */
+/* Кнопка закрытия */
+.booking-close {
+position: absolute;
+top: 10px;
+right: 15px;
+background: none;
+border: none;
+font-size: 18px;
+cursor: pointer;
+}
+
+/* Заголовок */
+.booking-popup h2 {
+font-size: 22px;
+font-weight: bold;
+}
+
+/* Фото яхты */
+.booking-image img {
+width: 100%;
+border-radius: 10px;
+}
+
+/* Название яхты */
+.booking-popup h3 {
+font-size: 20px;
+font-weight: bold;
+margin: 10px 0;
+}
+
+/* Поля формы */
+.booking-inputs {
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-bottom: 15px;
+}
+
+.booking-inputs input,
+.booking-inputs textarea {
+width: 100%;
+padding: 10px;
+border-radius: 8px;
+border: 1px solid #ddd;
+font-size: 14px;
+background: #f5f5f5;
+}
+
+/* Чекбокс */
+.booking-checkbox {
+display: flex;
+align-items: center;
+gap: 10px;
+font-size: 14px;
+margin-bottom: 15px;
+}
+
+.booking-checkbox input {
+width: 16px;
+height: 16px;
+}
+
+/* Кнопка отправки */
+#submit-btn {
+width: 100%;
+padding: 12px;
+border: none;
+border-radius: 8px;
+font-size: 16px;
+font-weight: bold;
+background: #ddd;
+color: white;
+cursor: not-allowed;
+transition: background 0.3s;
+}
+
+/* Активная кнопка */
+#submit-btn.active {
+background: #ffd700;
+color: black;
+cursor: pointer;
+}
+
+/* Адаптация */
 @media (max-width: 768px) {
-    .boat-buttons {
-        flex-direction: column;
-    }
-
-    .boat-btn {
-        font-size: 14px;
-        padding: 10px;
-    }
+.booking-popup {
+width: 90%;
+}
 }
 
 
 
-/* --- Подвал (футер) --- */
-.bottom-footer {
-    background: #fff;
+/* Кнопка во время загрузки */
+#submit-btn.loading {
+    background: #ccc !important;
+    color: #888 !important;
+    cursor: not-allowed;
+}
+
+
+
+/* Секция "Отзывы" */
+.reviews {
+    padding: 50px 20px;
     text-align: center;
-    padding: 30px 20px;
+    background: #f9f9f9;
 }
 
-/* --- Логотип внизу --- */
-.footer-brand {
-    margin-bottom: 15px;
-}
-
-.footer-logo-text {
+.reviews-title {
     font-size: 28px;
     font-weight: bold;
-    color: #222;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-/* --- Иконки соцсетей --- */
-.footer-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
     margin-bottom: 20px;
+    color: #222;
 }
 
-.footer-icon {
-    width: 55px;
-    height: 55px;
-    background: #f1f1f1;
-    border-radius: 50%;
+/* Контейнер слайдера */
+.reviews-slider {
     display: flex;
-    align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* --- Иконки внутри кнопок --- */
-.footer-icon img {
-    width: 60%;
-    height: 60%;
-    transition: transform 0.3s ease;
-}
-
-/* --- Эффект при наведении --- */
-.footer-icon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.footer-icon:hover img {
-    transform: scale(1.2);
-}
-
-/* --- Нижний текст с копирайтом --- */
-.footer-bottom-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
+    overflow: hidden;
+    max-width: 90%;
     margin: 0 auto;
-    padding-top: 15px;
-    font-size: 14px;
-    color: #666;
-    border-top: 1px solid #ddd;
 }
 
-/* --- Политика конфиденциальности --- */
-.footer-privacy {
-    text-decoration: none;
-    color: #666;
+/* Контейнер с отзывами */
+.reviews-container {
+    display: flex;
+    gap: 20px;
+    scroll-snap-type: x mandatory; /* Фиксация на отзывах */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
-.footer-privacy:hover {
-    text-decoration: underline;
+/* Стили отзывов */
+.review {
+    flex: 0 0 320px; /* Размер отзыва (фиксированный) */
+    max-width: 320px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    scroll-snap-align: center; /* Фиксация отзывов */
 }
 
-/* --- Адаптация под мобильные устройства --- */
+/* Текст отзыва */
+.review-comment {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.review-name {
+    font-weight: bold;
+    font-size: 18px;
+    color: #222;
+    text-align: right;
+}
+
+/* Звездный рейтинг */
+.review-rating {
+    font-size: 20px;
+    color: #ffd700; /* Желтые звезды */
+    text-align: right;
+}
+
+/* Убираем скроллбар */
+.reviews-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Адаптация */
 @media (max-width: 768px) {
-    .footer-bottom-section {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
+    .reviews-slider {
+        max-width: 100%;
     }
 
-    .footer-logo-text {
-        font-size: 24px;
-    }
-
-    .footer-icon {
-        width: 50px;
-        height: 50px;
-    }
-
-    .footer-icon img {
-        width: 55%;
-        height: 55%;
+    .review {
+        flex: 0 0 80%; /* Делаем шире на телефонах */
+        max-width: 80%;
     }
 }

@@ -204,3 +204,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+const images = ["yacht1.jpg", "yacht2.jpg", "yacht3.jpg"];
+let currentIndex = 0;
+
+function changeImage(img) {
+    document.getElementById("main-yacht-img").src = img.src;
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById("main-yacht-img").src = images[currentIndex];
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById("main-yacht-img").src = images[currentIndex];
+}

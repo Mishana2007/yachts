@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БЕЛУГА - Аренда яхт</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<style>
+        body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    background: #f9f9f9;
+    padding: 10px; /* Убираем лишний padding */
+}
+
+        .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px 20px;
+}
+
+.yacht-container {
+    margin-top: 80px; /* Отступ, равный высоте меню */
+}
+        .breadcrumbs {
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .breadcrumbs a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .main-gallery {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .main-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            gap: 10px;
+        }
+
+        .thumbnails img {
+            width: 80px;
+            height: 60px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .thumbnails img.active {
+            border-color: #009688;
+        }
+
+        .yacht-title-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .yacht-title {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .yacht-specs {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end; /* Сдвиг в правую сторону */
+}
+
+.spec-tag {
+    background: linear-gradient(-45deg, #b8860b, #d4af37, #e8c86d, #b8860b);
+    background-size: 300% 300%;
+    color: white;
+    padding: 8px 18px; /* Чуть больше */
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.5s ease-in-out;
+    animation: waterFlow 4s infinite linear; /* Длинный цикл для плавности */
+}
+
+@keyframes waterFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+        .section-title {
+            font-size: 20px;
+            color: #1a1a1a;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin: 25px 0;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .amenity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+        }
+
+        .amenity i {
+            color: #009688;
+        }
+
+        .price-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+    flex-wrap: nowrap;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.price-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 20px;
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    width: 48%; /* Растягиваем, но чтобы влезло в одну строку */
+    min-width: 200px;
+}
+
+.price-weekday {
+    background: #f5f2e9;
+    color: #5c5c5c;
+    border: 2px solid #ddd5b9;
+}
+
+/* ПТ-ВС (глубокий золотой с эффектом объема) */
+.price-weekend {
+    background: linear-gradient(45deg, #b8860b, #d4af37);
+    color: white;
+}
+
+.price-inner {
+    background: white;
+    padding: 4px 14px;
+    border-radius: 25px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #000;
+}
+
+.price-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+        /* Стили кнопки "Арендовать" */
+.cta-button {
+    width: 100%;
+    padding: 16px 22px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(45deg, #ffcc00, #e1ad01);
+    background-size: 200% 200%;
+    animation: goldShimmer 3s infinite alternate;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Эффект "живого золота" */
+@keyframes goldShimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Эффект нажатия */
+.cta-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+        .location {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 15px;
+            justify-content: center;
+        }
+
+
+        /* Блок описания яхты */
+.yacht-description {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.yacht-description h2 {
+    font-size: 24px;
+    color: #b8860b;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.yacht-description p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+/* Блок тарифов */
+.tariff-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tariff-section h2 {
+    font-size: 24px;
+    color: #b8860b;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Стиль для каждого сезона */
+.tariff-box {
+    margin-bottom: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tariff-header {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    color: white;
+}
+
+/* Цвета для сезонов */
+.low-season .tariff-header {
+    background: linear-gradient(45deg, #d4af37, #e1c16e);
+}
+
+.high-season .tariff-header {
+    background: linear-gradient(45deg, #b8860b, #d4af37);
+}
+
+/* Таблица цен */
+.tariff-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tariff-table th, .tariff-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 16px;
+}
+
+.tariff-table th {
+    background: #f9f9f9;
+    font-weight: bold;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .tariff-table th, .tariff-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .tariff-header {
+        font-size: 18px;
+    }
+}
+    </style>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">BREEZE</a>
+            
+            <ul class="nav-menu">
+                <li><a href="#">Главный экран</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Каталог яхт</a></li>
+                <li><a href="#">Преимущества</a></li>
+                <li><a href="#">Отзывы</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+
+            <div class="social-icons desktop">
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fas fa-phone"></i></a>
+            </div>
+
+            <div class="mobile-controls">
+                <div class="social-icons mobile">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fas fa-phone"></i></a>
+                </div>
+                <button class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <a href="index.html">Главный экран</a>
+            <a href="#">О нас</a>
+            <a href="#">Каталог яхт</a>
+            <a href="#">Преимущества</a>
+            <a href="#">Отзывы</a>
+            <a href="#">Контакты</a>
+        </div>
+        <button class="close-menu" id="close-menu">✖</button>
+    </div>
+
+    <section class="yacht-container">
+        <div class="main-gallery">
+            <img src="yacht-background.png" alt="Яхта Белуга" class="main-image">
+            <div class="thumbnails">
+                <img src="yacht-background.png" class="active">
+                <img src="yacht-background.png">
+                <img src="yacht-background.png">
+            </div>
+        </div>
+
+        <div class="yacht-info">
+            <div class="yacht-title-container">
+                <h1 class="yacht-title">БЕЛУГА</h1>
+                <div class="yacht-specs">
+                    <span class="spec-tag">10 человек</span>
+                    <span class="spec-tag">13 метров</span>
+                </div>
+            </div>
+
+            <h2 class="section-title">На борту:</h2>
+            <div class="amenities-grid">
+                <div class="amenity"><i class="fas fa-snowflake"></i> Кондиционер</div>
+                <div class="amenity"><i class="fas fa-music"></i> Музыкальная система</div>
+                <div class="amenity"><i class="fas fa-fire"></i> Печка</div>
+                <div class="amenity"><i class="fas fa-umbrella"></i> Плед</div>
+                <div class="amenity"><i class="fas fa-tent"></i> Тент</div>
+                <div class="amenity"><i class="fas fa-toilet"></i> Туалет</div>
+                <div class="amenity"><i class="fas fa-glass-martini"></i> Бокалы</div>
+            </div>
+
+            <div class="rental-info">
+                <p>Минимальное время аренды: <strong>1 час</strong></p>
+                <div class="price-section">
+                    <div class="price-box price-weekday">
+                        <span>ПН-ЧТ</span>
+                        <span class="price-inner">ОТ <strong>18 000</strong> ₽/ЧАС</span>
+                    </div>
+                    <div class="price-box price-weekend">
+                        <span>ПТ-ВС</span>
+                        <span class="price-inner">ОТ <strong>21 000</strong> ₽/ЧАС</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="cta-button" id="rent-button">Арендовать</button>
+
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                Причал Мойка 17
+            </div>
+        </div>
+    </section>
+
+
+    <section class="yacht-description">
+        <h2>О яхте Белуга</h2>
+        <p>
+            Яхта "Белуга" – сочетание роскоши, стиля и максимального комфорта. 
+            Уютный салон с панорамной крышей позволяет наслаждаться пейзажами, 
+            а платформа для купания добавляет приятных впечатлений. 
+            Современная аудиосистема 7.1 и 50-дюймовый экран сделают ваше путешествие еще приятнее.
+        </p>
+        <p>
+            Яхта оснащена кухней, холодильником, кондиционером, системой отопления 
+            и даже ледогенератором – все для вашего удобства. 
+            Аренда "Белуги" – это возможность провести незабываемый отдых на воде 
+            с максимальным уровнем комфорта.
+        </p>
+    </section>
+    
+    <section class="tariff-section">
+        <h2>Тарифы</h2>
+        
+        <!-- Низкий сезон -->
+        <div class="tariff-box low-season">
+            <div class="tariff-header">Низкий сезон</div>
+            <table class="tariff-table">
+                <tr>
+                    <th>Период</th>
+                    <th>Цена (₽/час)</th>
+                </tr>
+                <tr>
+                    <td>до 15 мая и с 1 сентября</td>
+                    <td>
+                        ПН-ЧТ: <strong>18 000</strong> ₽/час<br>
+                        ПТ-ВС: <strong>21 000</strong> ₽/час
+                    </td>
+                </tr>
+                <tr>
+                    <td>Мосты</td>
+                    <td>
+                        ПН-ЧТ: <strong>20 000</strong> ₽/час<br>
+                        ПТ-ВС: <strong>23 000</strong> ₽/час
+                    </td>
+                </tr>
+            </table>
+        </div>
+    
+        <!-- Высокий сезон -->
+        <div class="tariff-box high-season">
+            <div class="tariff-header">Высокий сезон</div>
+            <table class="tariff-table">
+                <tr>
+                    <th>Период</th>
+                    <th>Цена (₽/час)</th>
+                </tr>
+                <tr>
+                    <td>с 15 мая по 31 августа</td>
+                    <td>
+                        ПН-ЧТ: <strong>23 000</strong> ₽/час<br>
+                        ПТ-ВС: <strong>27 000</strong> ₽/час
+                    </td>
+                </tr>
+                <tr>
+                    <td>Мосты</td>
+                    <td>
+                        ПН-ЧТ: <strong>25 000</strong> ₽/час<br>
+                        ПТ-ВС: <strong>30 000</strong> ₽/час
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.thumbnails img').forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                document.querySelector('.main-image').src = this.src;
+                document.querySelectorAll('.thumbnails img').forEach(img => img.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Скрипт для мобильного меню
+        const menuBtn = document.querySelector(".menu-btn");
+        const closeMenu = document.querySelector("#close-menu");
+        const mobileMenu = document.querySelector("#mobile-menu");
+        const overlay = document.querySelector("#overlay");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.add("open");
+            overlay.style.display = "block";
+        });
+
+        closeMenu.addEventListener("click", () => {
+            mobileMenu.classList.remove("open");
+            overlay.style.display = "none";
+        });
+
+        overlay.addEventListener("click", () => {
+            mobileMenu.classList.remove("open");
+            overlay.style.display = "none";
+        });
+
+        
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -97,20 +97,41 @@
     background: linear-gradient(-45deg, #b8860b, #d4af37, #e8c86d, #b8860b);
     background-size: 300% 300%;
     color: white;
-    padding: 8px 18px; /* Чуть больше */
-    border-radius: 15px;
-    font-size: 16px;
+    padding: 5px 12px; /* Сделали меньше */
+    border-radius: 12px; /* Чуть скруглили */
+    font-size: 14px; /* Уменьшили шрифт */
     font-weight: bold;
     text-transform: uppercase;
-    transition: 0.5s ease-in-out;
+    transition: 0.3s ease-in-out;
     animation: waterFlow 4s infinite linear; /* Длинный цикл для плавности */
 }
 
+/* Эффект при наведении */
+.spec-tag:hover {
+    transform: scale(1.05);
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .spec-tag {
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 10px;
+    }
+}
+
+/* Анимация плавного переливания */
 @keyframes waterFlow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
+/* @keyframes waterFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+} */
 
         .section-title {
             font-size: 20px;

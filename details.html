@@ -348,6 +348,122 @@
         border-radius: 41px; /* Чуть сильнее закруглили */
     }
 }
+
+
+/* Стили для футера */
+.company-footer {
+    background: #f8f9fa;
+    padding: 40px 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-brand {
+    margin-bottom: 25px;
+}
+
+.logo-text {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #2c3e50;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.company-description {
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+.locations {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.location-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #34495e;
+}
+
+.separator {
+    color: #bdc3c7;
+    margin: 0 5px;
+}
+
+/* Новые стили для социальных иконок */
+.social-icons-new {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.social-link {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-link.whatsapp { background: #25D366; }
+.social-link.telegram { background: #0088cc; }
+.social-link.phone { background: #2ecc71; }
+
+.social-link i {
+    color: white;
+    font-size: 1.2em;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Стили для политики */
+.footer-legal {
+    margin-top: 25px;
+    font-size: 0.85em;
+}
+
+.privacy-link {
+    color: #7f8c8d;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.privacy-link:hover {
+    color: #3498db;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 1.8em;
+    }
+    
+    .social-icons-new {
+        gap: 15px;
+        margin: 25px 0;
+    }
+    
+    .social-link {
+        width: 40px;
+        height: 40px;
+    }
+}
     </style>
 
     <nav class="navbar">
@@ -465,10 +581,10 @@
         </p>
     </section>
     
-    <section class="tariff-section">
+    <!-- <section class="tariff-section">
         <h2>Тарифы</h2>
         
-        <!-- Низкий сезон -->
+ 
         <div class="tariff-box low-season">
             <div class="tariff-header">Низкий сезон</div>
             <table class="tariff-table">
@@ -493,7 +609,6 @@
             </table>
         </div>
     
-        <!-- Высокий сезон -->
         <div class="tariff-box high-season">
             <div class="tariff-header">Высокий сезон</div>
             <table class="tariff-table">
@@ -517,7 +632,53 @@
                 </tr>
             </table>
         </div>
-    </section>
+    </section> -->
+
+
+    <!-- Футер -->
+<footer class="company-footer">
+    <div class="footer-content">
+        <!-- Логотип -->
+        <div class="footer-brand">
+            <h2 class="logo-text">BREEZE</h2>
+            <p class="company-description">Судоходная компания BREEZE</p>
+        </div>
+
+        <!-- Локации -->
+        <div class="locations">
+            <div class="location-item">
+                <span class="city">Санкт-Петербург</span>
+                <span class="separator">|</span>
+                <span class="established">est. 2014</span>
+            </div>
+            <!-- <div class="location-item">
+                <span class="city">Дубай</span>
+                <span class="separator">|</span>
+                <span class="established">est. 2024</span>
+            </div> -->
+        </div>
+
+        <!-- Социальные иконки (новая версия) -->
+        <div class="social-icons-new">
+            <a href="#" class="social-link whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" class="social-link telegram">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="#" class="social-link phone">
+                <i class="fas fa-phone"></i>
+            </a>
+        </div>
+
+        <!-- Политика конфиденциальности -->
+        <div class="footer-legal">
+            <a href="/privacy-policy" class="privacy-link">
+                Политика конфиденциальности
+            </a>
+        </div>
+    </div>
+</footer>
 
     <script>
         document.querySelectorAll('.thumbnails img').forEach(thumb => {

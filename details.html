@@ -97,41 +97,20 @@
     background: linear-gradient(-45deg, #b8860b, #d4af37, #e8c86d, #b8860b);
     background-size: 300% 300%;
     color: white;
-    padding: 5px 12px; /* Сделали меньше */
-    border-radius: 12px; /* Чуть скруглили */
-    font-size: 14px; /* Уменьшили шрифт */
+    padding: 8px 18px; /* Чуть больше */
+    border-radius: 15px;
+    font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
-    transition: 0.3s ease-in-out;
+    transition: 0.5s ease-in-out;
     animation: waterFlow 4s infinite linear; /* Длинный цикл для плавности */
 }
 
-/* Эффект при наведении */
-.spec-tag:hover {
-    transform: scale(1.05);
-}
-
-/* Адаптация под мобильные устройства */
-@media (max-width: 768px) {
-    .spec-tag {
-        font-size: 12px;
-        padding: 4px 10px;
-        border-radius: 10px;
-    }
-}
-
-/* Анимация плавного переливания */
 @keyframes waterFlow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
-/* @keyframes waterFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-} */
 
         .section-title {
             font-size: 20px;
@@ -173,39 +152,45 @@
 
 .price-box {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 6px 20px;
-    border-radius: 40px;
-    font-size: 15px;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 36px; /* Увеличили закругление на +1px */
+    font-size: 14px;
     font-weight: bold;
-    text-transform: uppercase;
-    color: #fff;
-    border: none;
-    width: 48%; /* Растягиваем, но чтобы влезло в одну строку */
-    min-width: 200px;
+    text-align: center;
+    min-width: 120px;
 }
 
 .price-weekday {
     background: #f5f2e9;
     color: #5c5c5c;
     border: 2px solid #ddd5b9;
+    padding: 4px 10px;
+    border-radius: 36px; /* Чуть сильнее закруглили */
 }
 
-/* ПТ-ВС (глубокий золотой с эффектом объема) */
+/* ПТ-ВС (золотистый градиент) */
 .price-weekend {
     background: linear-gradient(45deg, #b8860b, #d4af37);
     color: white;
+    padding: 4px 10px;
+    border-radius: 36px; /* Чуть сильнее закруглили */
+    transition: background 0.3s ease-in-out;
 }
 
 .price-inner {
     background: white;
-    padding: 4px 14px;
-    border-radius: 25px;
-    font-size: 17px;
+    padding: 3px 10px;
+    border-radius: 51px; /* Увеличили закругление на +1px */
+    font-size: 15px;
     font-weight: bold;
     color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .price-box:hover {
@@ -348,6 +333,19 @@
 
     .tariff-header {
         font-size: 18px;
+    }
+
+    .price-box {
+        font-size: 12px;
+        padding: 4px 8px;
+        min-width: 100px;
+        border-radius: 29px; /* Чуть сильнее закруглили */
+    }
+
+    .price-inner {
+        font-size: 13px;
+        padding: 3px 8px;
+        border-radius: 41px; /* Чуть сильнее закруглили */
     }
 }
     </style>

@@ -221,3 +221,38 @@ function nextImage() {
     currentIndex = (currentIndex + 1) % images.length;
     document.getElementById("main-yacht-img").src = images[currentIndex];
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const mainImage = document.getElementById("mainImage");
+    const thumbnails = document.querySelectorAll(".thumbnails img");
+    const backArrow = document.getElementById("backArrow");
+
+    // Запоминаем исходное изображение
+    const defaultImageSrc = mainImage.src;
+
+    thumbnails.forEach((thumbnail) => {
+        thumbnail.addEventListener("click", function () {
+            mainImage.src = this.src;
+
+            // Показываем стрелку
+            backArrow.classList.add("show");
+
+            // Обновляем active у миниатюр
+            thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+
+    // Клик по стрелке — вернуть первую картинку
+    backArrow.addEventListener("click", function () {
+        mainImage.src = defaultImageSrc;
+
+        // Возвращаем активную миниатюру
+        thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+        thumbnails[0].classList.add("active");
+
+        // Прячем стрелку
+        backArrow.classList.remove("show");
+    });
+});
